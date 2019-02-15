@@ -3,7 +3,6 @@ $(document).ready(function(){
 
   $("#person_save").click(function() {
     savePerson();
-    loadPeople();
   });
 });
 
@@ -71,33 +70,7 @@ function savePerson() {
   .done(function(response){
     $("#addEmployeeModal").modal('hide');
     alert("cadastrado realizado com sucesso!");
-  })
-  .fail(function(error){
-    alert("Ocorreu um erro inesperado");
-  });
-}
-
-function editPerson() {
-  let name = $("#person_name_edit").val();
-  let nickname = $("#person_nickname_edit").val();
-  let email = $("#person_email_edit").val();
-  let phone = $("#person_phone_edit").val();
-
-  $.ajax({
-    url : "http://127.0.0.1:3000/api/v1/people",
-    type : 'PUT',
-    dataType: 'json',
-    contentType: "application/x-www-form-urlencoded",
-    data: {
-      name: name,
-      nickname: nickname,
-      email: email,
-      phone: phone
-    },
-  })
-  .done(function(response){
-    $("#addEmployeeModal").modal('hide');
-    alert("cadastrado realizado com sucesso!");
+    loadPeople();
   })
   .fail(function(error){
     alert("Ocorreu um erro inesperado");
